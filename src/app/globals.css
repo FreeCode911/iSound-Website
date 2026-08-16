@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+/* Tell Tailwind v4 where to scan for class names used in this project */
+@source "./**/*.{ts,tsx}";
+@source "../components/**/*.{ts,tsx}";
+
+@theme {
+  /* Colors */
+  --color-background: #0a0500;
+  --color-surface: #110800;
+  --color-surfaceElevated: #1a0d00;
+  --color-mid: #321001;
+  --color-accent: #f0b52a;
+  --color-accentDark: #8a5008;
+  --color-text: #ffd966;
+  --color-textMuted: #b89a4d;
+  --color-textDim: #8a7a3a;
+  --color-primary: #f0b52a;
+  --color-primaryHover: #ffc940;
+  --color-success: #57f287;
+  --color-error: #ed4245;
+  --color-warning: #fee75c;
+  --color-info: #5865f2;
+
+  /* Fonts */
+  --font-heading: "Audiowide", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  /* Shadows */
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 40px rgba(240, 181, 42, 0.15);
+  --shadow-glowStrong: 0 0 60px rgba(240, 181, 42, 0.3);
+
+  /* Animations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glowPulse: glowPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(240, 181, 42, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(240, 181, 42, 0.55);
+  }
+}
+
+/* Custom gradients (kept as plain CSS classes for reliability across Tailwind versions) */
+.bg-gradient-hero {
+  background-image: linear-gradient(135deg, #0a0500 0%, #1a0d00 50%, #0a0500 100%);
+}
+.bg-gradient-accent {
+  background-image: linear-gradient(135deg, #8a5008 0%, #f0b52a 50%, #ffd966 100%);
+}
+.bg-gradient-surface {
+  background-image: linear-gradient(180deg, #110800 0%, #0a0500 100%);
+}
+
+:root {
+  --font-heading-family: "Audiowide", sans-serif;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0a0500;
+  color: #ffd966;
+  font-family: "Inter", sans-serif;
+}
+
+::selection {
+  background-color: #f0b52a;
+  color: #0a0500;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0500;
+}
+::-webkit-scrollbar-thumb {
+  background: #8a5008;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f0b52a;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.container-max {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.section-padding {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+@media (max-width: 1024px) {
+  .section-padding {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section-padding {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+.text-gradient-accent {
+  background-image: linear-gradient(135deg, #8a5008 0%, #f0b52a 50%, #ffd966 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid #f0b52a;
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Legal page prose */
+.legal-prose section h2 {
+  font-family: var(--font-heading-family);
+  font-size: 1.25rem;
+  color: #ffd966;
+  margin-bottom: 0.75rem;
+}
+.legal-prose section p,
+.legal-prose section li {
+  color: #b89a4d;
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+.legal-prose section p + p {
+  margin-top: 0.75rem;
+}
+.legal-prose section ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+.legal-prose section a {
+  color: #f0b52a;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.legal-prose section a:hover {
+  color: #ffd966;
+}
+.legal-prose strong {
+  color: #ffd966;
+  font-weight: 600;
+}
